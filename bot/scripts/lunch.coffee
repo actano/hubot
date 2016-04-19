@@ -6,6 +6,7 @@
 module.exports = (robot) ->
 
     choices =
+        0: "Not hungry"
         1: "Saigon"
         2: "Italian"
         3: "Austrian"
@@ -39,7 +40,7 @@ module.exports = (robot) ->
         index = res.match[1];
         currentUsers = result[index];
         if not currentUsers?
-            res.reply "You voted for a none-existing choice"
+            res.reply "You voted for a non-existent choice"
         else if (userName not in currentUsers)
             currentUsers.push(userName);
             res.reply "You voted for #{choices[index]}"
