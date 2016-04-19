@@ -34,3 +34,8 @@ bot/node_modules
 .node_repl_history
 
 bot/.hubot_history
+
+
+# Idea project files
+*.iml
+.idea
