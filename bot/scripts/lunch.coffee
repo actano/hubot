@@ -15,7 +15,7 @@ module.exports = (robot) ->
     freshResult = ->
         result = {}
         for index, choice of choices
-            result[index] = 0
+            result[index] = []
         result
 
     result = freshResult();
@@ -23,17 +23,25 @@ module.exports = (robot) ->
     robot.hear /lunch start/, (res) ->
         result = freshResult();
 
-        res.send "Where do we go for lunch today?"
+        res.send "Where to go for lunch today? "
+        res.send "Make your choice e.g. \"lunch 1\""
 
         for index, choice of choices
             res.send "#{index}: #{choice}"
 
     robot.hear /lunch result/, (res) ->
-        for index, count of result
-            unless count == 0
-                res.send "#{choices[index]}: #{count}"
+        for index, members of result
+            unless members.length == 0
+                res.send "#{choices[index]}: #{members.length} (#{members.join(", ")})"
 
     robot.hear /lunch ([0-9]+)/, (res, msg) ->
+        userName = res.message.user.name;
         index = res.match[1];
-        result[index]++;
-        res.send "Vote for #{choices[index]}"
+        currentUsers = result[index];
+        if not currentUsers?
+            res.reply "You voted for a none-existing choice"
+        else if (userName not in currentUsers)
+            currentUsers.push(userName);
+            res.reply "You voted for #{choices[index]}"
+        else
+            res.reply "You have already voted for #{choices[index]}"
