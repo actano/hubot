@@ -188,7 +188,7 @@ module.exports =
 
     if !data.deleted
       if head_commit.message.indexOf("package.json") isnt -1
-        chat_notification = chat_notification + "\nFolks please call npm prune and npm install!"
+        chat_notification = chat_notification + "\n\n*Folks please call npm prune and npm install!*"
       callback chat_notification
 
   # Org level event
