@@ -12,6 +12,8 @@ module.exports = (robot) ->
         3: "Austrian"
         4: "Burger"
         5: "Falafel"
+        6: 'Korean'
+        7: 'Steak'
 
     freshResult = ->
         result = {}
