@@ -26,6 +26,7 @@
     "node": "0.10.x"
   },
   "devDependencies": {
+    "chai": "^3.5.0",
     "eslint": "^2.11.1",
     "eslint-config-actano": "^1.0.1",
     "eslint-plugin-import": "^1.8.1",

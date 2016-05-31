@@ -1,4 +1,4 @@
-const choices = {
+const LunchChoice = {
   0: 'Not hungry',
   1: 'Saigon',
   2: 'Italian',
@@ -16,7 +16,7 @@ class LunchBot {
 
   freshResult() {
     const result = {}
-    Object.keys(choices).forEach((index) => {
+    Object.keys(LunchChoice).forEach((index) => {
       result[index] = []
     })
     return result
@@ -28,17 +28,17 @@ class LunchBot {
     res.send('Where to go for lunch today? ')
     res.send('Make your choice e.g. "lunch 1"')
 
-    Object.keys(choices).forEach((index) => {
-      res.send(`${index}: ${choices[index]}`)
+    Object.keys(LunchChoice).forEach((index) => {
+      res.send(`${index}: ${LunchChoice[index]}`)
     })
   }
 
   results(res) {
     const result = this.result
-    Object.keys(choices).forEach((index) => {
+    Object.keys(LunchChoice).forEach((index) => {
       const members = result[index]
       if (members.length !== 0) {
-        res.send(`${choices[index]}: ${members.length} (${members.join(', ')})`)
+        res.send(`${LunchChoice[index]}: ${members.length} (${members.join(', ')})`)
       }
     })
   }
@@ -51,9 +51,9 @@ class LunchBot {
       res.reply('You voted for a non-existent choice')
     } else if (currentUsers.indexOf(userName) === -1) {
       currentUsers.push(userName)
-      res.reply(`You voted for ${choices[index]}`)
+      res.reply(`You voted for ${LunchChoice[index]}`)
     } else {
-      res.reply(`You have already voted for ${choices[index]}`)
+      res.reply(`You have already voted for ${LunchChoice[index]}`)
     }
   }
 
@@ -61,5 +61,6 @@ class LunchBot {
 
 module.exports = {
   LunchBot,
+  LunchChoice,
 }
 
