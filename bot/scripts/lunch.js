@@ -20,7 +20,7 @@ module.exports = (robot) => {
 
   let result = freshResult()
 
-  robot.hear('lunch start', (res) => {
+  robot.hear(/lunch start/, (res) => {
     result = freshResult()
 
     res.send('Where to go for lunch today? ')
