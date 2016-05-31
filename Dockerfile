@@ -1,4 +1,4 @@
-FROM node:5.10.1
+FROM node:6.2.0
 
 RUN mkdir /opt/bot \
     && useradd -ms /bin/bash node \
