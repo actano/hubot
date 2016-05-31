@@ -12,11 +12,9 @@ module.exports = (robot) => {
 
   const freshResult = () => {
     const result = {}
-    for (let index in choices) {
-      if ({}.hasOwnProperty.call(choices, index)) {
-        result[index] = []
-      }
-    }
+    Object.keys(choices).forEach((index) => {
+      result[index] = []
+    })
     return result
   }
 
@@ -28,18 +26,18 @@ module.exports = (robot) => {
     res.send('Where to go for lunch today? ')
     res.send('Make your choice e.g. "lunch 1"')
 
-    for (let index in choices) {
+    Object.keys(choices).forEach((index) => {
       res.send(`${index}: ${choices[index]}`)
-    }
+    })
   })
 
   robot.hear(/lunch result/, (res) => {
-    for (let index in result) {
+    Object.keys(choices).forEach((index) => {
       const members = result[index]
       if (members.length !== 0) {
         res.send(`${choices[index]}: ${members.length} (${members.join(', ')})`)
       }
-    }
+    })
   })
 
   robot.hear(/lunch ([0-9]+)/, (res) => {
