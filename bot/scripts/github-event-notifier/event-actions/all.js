@@ -14,4 +14,6 @@ function push(data, callback) {
   return undefined
 }
 
-export { push }
+module.exports = {
+  push,
+}

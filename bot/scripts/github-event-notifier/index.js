@@ -61,7 +61,7 @@ if (eventTypesRaw != null) {
     '(HUBOT_GITHUB_EVENT_NOTIFIER_TYPES is empty).')
 }
 
-export default robot =>
+module.exports = (robot) =>
   robot.router.post('/hubot/gh-repo-events', (req, res) => {
     const data = req.body
     robot.logger.debug('github-repo-event-notifier: Received POST to ' +
