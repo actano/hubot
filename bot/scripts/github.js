@@ -6,7 +6,7 @@ Notes:
   if the package.json is changed, npm install has to be called
 */
 
-/*eslint global-require: "0" */
+/* eslint-disable global-require */
 module.exports = (robot) => {
-  require("./github-event-notifier")(robot)
+  require('./github-event-notifier')(robot)
 }
