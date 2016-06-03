@@ -37,6 +37,7 @@
   },
   "scripts": {
     "test": "mocha **/*.ut.js",
+    "test:watch": "mocha **/*.ut.js --watch",
     "lint": "eslint scripts",
     "start": "bin/hubot"
   }
