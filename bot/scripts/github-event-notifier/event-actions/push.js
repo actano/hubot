@@ -1,15 +1,14 @@
-module.exports = (data, callback) => {
-  const { head_commit } = data
-  const repo = data.repository
-  const { pusher } = data
-  let chatNotification = `New Commit \"${head_commit.message}\" to ${repo.full_name}
-    by ${pusher.name}: ${head_commit.url}`
+const messages = require('../messages')
+const flatMap = require('lodash/fp/flatMap')
 
-  if (!data.deleted) {
-    if (head_commit.message.indexOf('npm-shrinkwrap.json') !== -1) {
-      chatNotification = `${chatNotification} \n\n*Folks please call npm prune and npm install!*`
-    }
-    return callback(chatNotification)
+module.exports = (data, callback) => {
+  const { commits } = data
+  const modifiedFiles = flatMap((commit) => commit.modified, commits)
+
+  if (modifiedFiles.indexOf('npm-shrinkwrap.json') !== -1) {
+    const fullName = data.repository.full_name
+    const chatMessage = messages.shrinkwrap(fullName)
+    return callback(chatMessage)
   }
   return undefined
 }
