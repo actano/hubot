@@ -1,4 +1,4 @@
-function push(data, callback) {
+module.exports = (data, callback) => {
   const { head_commit } = data
   const repo = data.repository
   const { pusher } = data
@@ -12,8 +12,4 @@ function push(data, callback) {
     return callback(chatNotification)
   }
   return undefined
-}
-
-module.exports = {
-  push,
 }

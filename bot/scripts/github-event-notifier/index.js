@@ -33,7 +33,7 @@
 //   parkr
 
 const { inspect } = require('util')
-const eventActions = require('./event-actions/all')
+const eventActions = require('./event-actions')
 const eventTypesRaw = 'push:*'
 let eventTypes = []
 
