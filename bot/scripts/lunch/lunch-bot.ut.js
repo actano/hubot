@@ -2,7 +2,9 @@
 /* eslint-disable no-unused-expressions */
 
 const sinon = require('sinon')
-const { expect } = require('chai')
+const chai = require('chai')
+const expect = chai.expect
+chai.use(require('sinon-chai'))
 const { LunchBot, LunchChoice } = require('./lunch-bot')
 
 describe('lunch-bot', () => {
@@ -27,7 +29,7 @@ describe('lunch-bot', () => {
     it('should start a lunch poll', () => {
       bot.start(res)
       expect(bot.result[0]).to.eql([])
-      expect(res.send.calledWith(`0: ${LunchChoice[0]}`)).to.be.true
+      expect(res.send).to.have.been.calledWith(`0: ${LunchChoice[0]}`)
     })
   })
 
@@ -36,7 +38,7 @@ describe('lunch-bot', () => {
       res.match[1] = 0
       bot.vote(res)
       expect(bot.result[0]).to.eql(['john'])
-      expect(res.reply.called).to.be.true
+      expect(res.reply).to.be.have.been.called
     })
   })
 })
