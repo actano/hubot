@@ -1,5 +1,5 @@
 module.exports = (robot) => {
-  robot.respond(/describe/, (res) => {
+  robot.respond(/describe/i, (res) => {
     res.send(`node version: ${process.version}`)
   })
 }
