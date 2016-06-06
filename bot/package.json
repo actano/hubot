@@ -4,6 +4,12 @@
   "private": true,
   "author": "RPLAN Next Team",
   "description": "A simple helpful robot for your Company",
+  "scripts": {
+    "test": "mocha **/*.ut.js",
+    "test:watch": "mocha **/*.ut.js --watch",
+    "lint": "eslint scripts",
+    "start": "bin/hubot"
+  },
   "dependencies": {
     "@moqada/hubot-schedule-helper": "^1.0.0",
     "elasticsearch": "11.0.1",
@@ -38,11 +44,5 @@
     "mocha": "^2.5.3",
     "sinon": "^1.17.4",
     "sinon-chai": "^2.8.0"
-  },
-  "scripts": {
-    "test": "mocha **/*.ut.js",
-    "test:watch": "mocha **/*.ut.js --watch",
-    "lint": "eslint scripts",
-    "start": "bin/hubot"
   }
 }
