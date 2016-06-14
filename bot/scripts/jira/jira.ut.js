@@ -15,16 +15,18 @@ describe('jira', () => {
   beforeEach(() => {
     res = {
       send: sinon.stub(),
-      match: { },
+      match: [],
     }
   })
 
   describe('sendIssueLink', () => {
     it('should send issue link', () => {
-      res.match[1] = 1234
+      res.match = ['RX-1234', 'RX-2345']
       sendIssueLink(res)
 
-      expect(res.send).to.have.been.calledWith(messages.issueLink(1234))
+      expect(res.send).to.have.callCount(2)
+      expect(res.send).to.have.been.calledWith(messages.issueLink('RX-1234'))
+      expect(res.send).to.have.been.calledWith(messages.issueLink('RX-2345'))
     })
   })
 })

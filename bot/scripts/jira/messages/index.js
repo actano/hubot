@@ -1,4 +1,4 @@
 module.exports = {
   issueLink: (issueNumber) =>
-    `https://jira.actano.de/browse/RX-${issueNumber}`,
+    `https://jira.actano.de/browse/${issueNumber}`,
 }
