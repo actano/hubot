@@ -122,7 +122,7 @@ describe('group-bot', () => {
     })
   })
 
-  describe.only('_resetEveryDay', () => {
+  describe('_resetEveryDay', () => {
     let clock
     let today
     let tomorrow
