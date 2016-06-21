@@ -1,8 +1,11 @@
 language: node_js
+sudo: require
+services:
+  - docker
 node_js:
   - "6"
 before_install:
-  - cd bot
+  - docker build -t actano/nextbot .
 script:
-  - npm run lint
-  - npm test
+  - docker run actano/nextbot npm run lint
+  - docker run actano/nextbot npm test
