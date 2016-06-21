@@ -32,7 +32,7 @@ describe('jira', () => {
   })
 })
 
-describe('hubot script', () => {
+describe('jira hubot script', () => {
   let jira
   let robot
 
