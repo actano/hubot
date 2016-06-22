@@ -17,6 +17,9 @@ describe('jira', () => {
     res = {
       send: sinon.stub(),
       match: [],
+      message: {
+        text: '',
+      },
     }
   })
 
@@ -27,6 +30,14 @@ describe('jira', () => {
 
       expect(res.send).to.have.callCount(2)
       expect(res.send).to.have.been.calledWith(messages.issueLink('RX-1234'))
+      expect(res.send).to.have.been.calledWith(messages.issueLink('RX-2345'))
+    })
+    it('should not send issue link if the link is already part of the message', () => {
+      res.match = ['RX-1234', 'RX-2345']
+      res.message.text = messages.issueLink('RX-1234')
+      sendIssueLink(res)
+
+      expect(res.send).to.have.callCount(1)
       expect(res.send).to.have.been.calledWith(messages.issueLink('RX-2345'))
     })
   })
