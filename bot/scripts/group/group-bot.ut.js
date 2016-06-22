@@ -157,7 +157,7 @@ describe('group-bot', () => {
     })
 
     it('should call itself with new day on day change', () => {
-      clock.tick(ONE_DAY_AS_MILLIS - 1)
+      clock.tick(ONE_DAY_AS_MILLIS + 1)
       bot._resetOnNewDay(today)
       const recursionStub = sandbox.stub(bot, '_resetOnNewDay')
       clock.tick(RESET_INTERVAL)
