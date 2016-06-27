@@ -66,7 +66,7 @@ module.exports = (robot) =>
     const data = req.body
     robot.logger.debug('github-repo-event-notifier: Received POST to ' +
       `/hubot/gh-repo-events with data = ${inspect(data)}`)
-    const room = '#hackathon-chatops'
+    const room = '#nextbot-notifications'
     const eventType = req.headers['x-github-event']
     robot.logger.debug(`github-repo-event-notifier: Processing event type: \"${eventType}\"...`)
 
