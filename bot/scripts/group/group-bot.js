@@ -26,6 +26,24 @@ class GroupBot {
     res.send(`${groupName}: ${group.members.join(', ')}`)
   }
 
+  _sendWithMentions(res, groupName, excluded, text) {
+    const textWithMentions = this.groups[groupName].members
+        .filter((member) => member !== excluded)
+        .map((member) => `@${member}`)
+        .join(', ')
+        .concat(` ${text}`)
+        .trim()
+    res.send(textWithMentions)
+  }
+
+  _assertGroupExists(res, groupName) {
+    const group = this.groups[groupName]
+    if (!group) {
+      res.reply(`group ${groupName} does not exist`)
+    }
+    return group
+  }
+
   open(res) {
     const userName = res.message.user.name
     const groupName = res.match[1]
@@ -36,23 +54,24 @@ class GroupBot {
   join(res) {
     const userName = res.message.user.name
     const groupName = res.match[1]
-    const group = this.groups[groupName]
-    if (!group) {
-      res.reply(`group ${groupName} does not exist`)
-    } else {
-      if (group.members.indexOf(userName) === -1) {
-        group.members.push(userName)
-        res.send(`${userName} joined ${groupName}`)
-      }
+    const group = this._assertGroupExists(res, groupName)
+    if (group && group.members.indexOf(userName) === -1) {
+      group.members.push(userName)
+      res.send(`${userName} joined ${groupName}`)
     }
+  }
+
+  notify(res) {
+    const userName = res.message.user.name
+    const groupName = res.match[1]
+    const message = res.match[2]
+    this._sendWithMentions(res, groupName, userName, message)
   }
 
   members(res) {
     const groupName = res.match[1]
-    const group = this.groups[groupName]
-    if (!group) {
-      res.reply(`group ${groupName} does not exist`)
-    } else {
+    const group = this._assertGroupExists(res, groupName)
+    if (group) {
       this._sendGroupMembers(res, groupName)
     }
   }

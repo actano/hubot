@@ -122,6 +122,20 @@ describe('group-bot', () => {
     })
   })
 
+  describe('_sendWithMentions', () => {
+    it('should send with group members as mentions', () => {
+      bot.groups.italy = { members: ['john', 'snow'] }
+      bot._sendWithMentions(res, 'italy', 'john', 'some text')
+      expect(res.send).to.have.been.calledWith('@snow some text')
+    })
+
+    it('should send without mentions wit no group members', () => {
+      bot.groups.italy = { members: ['john'] }
+      bot._sendWithMentions(res, 'italy', 'john', 'some text')
+      expect(res.send).to.have.been.calledWith('some text')
+    })
+  })
+
   describe('_resetEveryDay', () => {
     let clock
     let today
