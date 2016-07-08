@@ -14,11 +14,12 @@ describe('github-event: push', () => {
   let callback
   let data
   const modified = memo().is(() => [])
+  const ref = memo().is(() => 'refs/heads/master')
 
   beforeEach(() => {
     callback = sinon.stub()
     data = {
-      ref: 'refs/heads/my-branch',
+      ref: ref(),
       repository: {
         full_name: 'orga/repo',
       },
@@ -50,6 +51,17 @@ describe('github-event: push', () => {
       'index.js',
     ])
 
+    it('should not notify', () => {
+      push(data, callback)
+      expect(callback).to.not.have.been.called
+    })
+  })
+
+  describe('changed shrinkwrap on non-master branch', () => {
+    modified.is(() => [
+      'npm-shrinkwrap.json',
+    ])
+    ref.is(() => 'refs/heads/other-branch')
     it('should not notify', () => {
       push(data, callback)
       expect(callback).to.not.have.been.called
