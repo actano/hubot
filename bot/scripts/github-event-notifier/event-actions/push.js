@@ -8,7 +8,6 @@ module.exports = (data, callback) => {
   if (modifiedFiles.indexOf('npm-shrinkwrap.json') !== -1) {
     const fullName = data.repository.full_name
     const chatMessage = messages.shrinkwrap(fullName)
-    return callback(chatMessage)
+    callback(chatMessage)
   }
-  return undefined
 }
