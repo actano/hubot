@@ -2,7 +2,7 @@ const LunchChoice = {
   0: 'Not hungry',
   1: 'Saigon',
   2: 'Italian',
-  3: 'Austrian',
+  3: 'Austrian, http://www.restaurant-vogelweide.de/Mittagstisch',
   4: 'Burger',
   5: 'Falafel',
   6: 'Korean',
