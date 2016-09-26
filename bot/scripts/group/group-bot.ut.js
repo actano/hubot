@@ -3,6 +3,7 @@
 
 const sinon = require('sinon')
 const chai = require('chai')
+
 const expect = chai.expect
 chai.use(require('sinon-chai'))
 const { GroupBot, RESET_INTERVAL } = require('./group-bot')

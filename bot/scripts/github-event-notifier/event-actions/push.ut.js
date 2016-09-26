@@ -4,6 +4,7 @@
 const sinon = require('sinon')
 const chai = require('chai')
 const memo = require('memo-is')
+
 const expect = chai.expect
 chai.use(require('sinon-chai'))
 

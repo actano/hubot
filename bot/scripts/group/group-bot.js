@@ -1,4 +1,5 @@
 const { LocalDate } = require('js-joda')
+
 const RESET_INTERVAL = 60000
 
 function today() {

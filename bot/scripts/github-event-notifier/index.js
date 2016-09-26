@@ -34,6 +34,7 @@
 
 const { inspect } = require('util')
 const eventActions = require('./event-actions')
+
 const eventTypesRaw = 'push:*'
 let eventTypes = []
 
@@ -86,7 +87,8 @@ module.exports = (robot) =>
             return true // wildcard on this event
           }
 
-          if (!data.hasOwnProperty('action')) {
+          const hasActionProperty = {}.hasOwnProperty.call(data, 'action')
+          if (!hasActionProperty) {
             return true // no action property, let it pass
           }
 
