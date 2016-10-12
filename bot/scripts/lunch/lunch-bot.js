@@ -1,11 +1,11 @@
 const LunchChoice = {
   0: 'Not hungry',
-  1: 'Saigon',
+  1: 'Saigon, http://today.saigon-berlin.de/files/saigon-today/download-karte/ST_Speisekarte.pdf',
   2: 'Italian',
   3: 'Austrian, http://www.restaurant-vogelweide.de/Mittagstisch',
   4: 'Burger',
   5: 'Falafel',
-  6: 'Korean',
+  6: 'Korean, http://media.wix.com/ugd/a741a9_78c74673264a4d909597caef540807f1.pdf',
   7: 'Steak',
 }
 
