@@ -68,4 +68,31 @@ describe('github-event: push', () => {
       expect(callback).to.not.have.been.called
     })
   })
+
+  describe('changed Dockerfile.dev', () => {
+    modified.is(() => [
+      'somefile.txt',
+      'Dockerfile.dev',
+      'anotherfile.json',
+    ])
+
+    it('should notify', () => {
+      const expectedMessage = messages.dockerfile('orga/repo')
+      push(data, callback)
+      expect(callback).to.have.been.calledOnce
+      expect(callback).to.have.been.calledWith(expectedMessage)
+    })
+  })
+
+  describe('unchanged Dockerfile.dev', () => {
+    modified.is(() => [
+      'somefile.txt',
+      'anotherfile.json',
+    ])
+
+    it('should not notify', () => {
+      push(data, callback)
+      expect(callback).to.not.have.been.called
+    })
+  })
 })
