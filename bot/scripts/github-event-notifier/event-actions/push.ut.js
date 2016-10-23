@@ -95,4 +95,20 @@ describe('github-event: push', () => {
       expect(callback).to.not.have.been.called
     })
   })
+
+  describe('changed npm-shrinkwrap.json and Dockerfile.dev', () => {
+    modified.is(() => [
+      'npm-shrinkwrap.json',
+      'Dockerfile.dev',
+    ])
+
+    it('should notify both', () => {
+      const expectedMessageShrinkwrap = messages.shrinkwrap('orga/repo')
+      const expectedMessageDockerfile = messages.dockerfile('orga/repo')
+      push(data, callback)
+      expect(callback).to.have.been.calledTwice
+      expect(callback).to.have.been.calledWith(expectedMessageShrinkwrap)
+      expect(callback).to.have.been.calledWith(expectedMessageDockerfile)
+    })
+  })
 })

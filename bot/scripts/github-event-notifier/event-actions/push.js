@@ -10,12 +10,12 @@ module.exports = (data, callback) => {
   if (ref === 'refs/heads/master') {
     if (modifiedFiles.indexOf('npm-shrinkwrap.json') !== -1) {
       chatMessage = messages.shrinkwrap(fullName)
-    } else if (modifiedFiles.indexOf('Dockerfile.dev') !== -1) {
-      chatMessage = messages.dockerfile(fullName)
+      callback(chatMessage)
     }
-  }
 
-  if (chatMessage) {
-    callback(chatMessage)
+    if (modifiedFiles.indexOf('Dockerfile.dev') !== -1) {
+      chatMessage = messages.dockerfile(fullName)
+      callback(chatMessage)
+    }
   }
 }
