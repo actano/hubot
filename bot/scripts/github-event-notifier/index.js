@@ -69,7 +69,7 @@ module.exports = (robot) =>
       `/hubot/gh-repo-events with data = ${inspect(data)}`)
     const room = '#nextbot-notifications'
     const eventType = req.headers['x-github-event']
-    robot.logger.debug(`github-repo-event-notifier: Processing event type: \"${eventType}\"...`)
+    robot.logger.debug(`github-repo-event-notifier: Processing event type: "${eventType}"...`)
 
     try {
       const filterParts = eventTypes
