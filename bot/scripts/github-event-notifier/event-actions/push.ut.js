@@ -32,22 +32,22 @@ describe('github-event: push', () => {
     }
   })
 
-  describe('changed shrinkwrap', () => {
+  describe('changed yarn.lock', () => {
     modified.is(() => [
       'somefile.txt',
-      'npm-shrinkwrap.json',
+      'yarn.lock',
       'anotherfile.json',
     ])
 
     it('should notify', () => {
-      const expectedMessage = messages.shrinkwrap('orga/repo')
+      const expectedMessage = messages.yarnLock('orga/repo')
       push(data, callback)
       expect(callback).to.have.been.calledOnce
       expect(callback).to.have.been.calledWith(expectedMessage)
     })
   })
 
-  describe('unchanged shrinkwrap', () => {
+  describe('unchanged yarn.lock', () => {
     modified.is(() => [
       'index.js',
     ])
@@ -58,9 +58,9 @@ describe('github-event: push', () => {
     })
   })
 
-  describe('changed shrinkwrap on non-master branch', () => {
+  describe('changed yarn.lock on non-master branch', () => {
     modified.is(() => [
-      'npm-shrinkwrap.json',
+      'yarn.lock',
     ])
     ref.is(() => 'refs/heads/other-branch')
     it('should not notify', () => {
@@ -96,18 +96,18 @@ describe('github-event: push', () => {
     })
   })
 
-  describe('changed npm-shrinkwrap.json and Dockerfile.dev', () => {
+  describe('changed yarn.lock and Dockerfile.dev', () => {
     modified.is(() => [
-      'npm-shrinkwrap.json',
+      'yarn.lock',
       'Dockerfile.dev',
     ])
 
     it('should notify both', () => {
-      const expectedMessageShrinkwrap = messages.shrinkwrap('orga/repo')
+      const expectedMessageYarnLock = messages.yarnLock('orga/repo')
       const expectedMessageDockerfile = messages.dockerfile('orga/repo')
       push(data, callback)
       expect(callback).to.have.been.calledTwice
-      expect(callback).to.have.been.calledWith(expectedMessageShrinkwrap)
+      expect(callback).to.have.been.calledWith(expectedMessageYarnLock)
       expect(callback).to.have.been.calledWith(expectedMessageDockerfile)
     })
   })

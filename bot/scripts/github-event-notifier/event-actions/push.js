@@ -8,8 +8,8 @@ module.exports = (data, callback) => {
   let chatMessage
 
   if (ref === 'refs/heads/master') {
-    if (modifiedFiles.indexOf('npm-shrinkwrap.json') !== -1) {
-      chatMessage = messages.shrinkwrap(fullName)
+    if (modifiedFiles.indexOf('yarn.lock') !== -1) {
+      chatMessage = messages.yarnLock(fullName)
       callback(chatMessage)
     }
 
