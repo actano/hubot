@@ -69,10 +69,10 @@ describe('github-event: push', () => {
     })
   })
 
-  describe('changed Dockerfile.dev', () => {
+  describe('changed docker-dev/Dockerfile', () => {
     modified.is(() => [
       'somefile.txt',
-      'Dockerfile.dev',
+      'docker-dev/Dockerfile',
       'anotherfile.json',
     ])
 
@@ -84,7 +84,7 @@ describe('github-event: push', () => {
     })
   })
 
-  describe('unchanged Dockerfile.dev', () => {
+  describe('unchanged docker-dev/Dockerfile', () => {
     modified.is(() => [
       'somefile.txt',
       'anotherfile.json',
@@ -96,10 +96,10 @@ describe('github-event: push', () => {
     })
   })
 
-  describe('changed yarn.lock and Dockerfile.dev', () => {
+  describe('changed yarn.lock and docker-dev/Dockerfile', () => {
     modified.is(() => [
       'yarn.lock',
-      'Dockerfile.dev',
+      'docker-dev/Dockerfile',
     ])
 
     it('should notify both', () => {

@@ -13,7 +13,7 @@ module.exports = (data, callback) => {
       callback(chatMessage)
     }
 
-    if (modifiedFiles.indexOf('Dockerfile.dev') !== -1) {
+    if (modifiedFiles.indexOf('docker-dev/Dockerfile') !== -1) {
       chatMessage = messages.dockerfile(fullName)
       callback(chatMessage)
     }
