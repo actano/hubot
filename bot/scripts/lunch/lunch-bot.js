@@ -1,12 +1,13 @@
 const LunchChoice = {
   0: 'Not hungry',
   1: 'Saigon, http://today.saigon-berlin.de/files/saigon-today/download-karte/ST_Speisekarte.pdf',
-  2: 'Italian',
-  3: 'Austrian, http://www.restaurant-vogelweide.de/Mittagstisch',
-  4: 'Burger',
-  5: 'Falafel',
-  6: 'Korean, http://media.wix.com/ugd/a741a9_78c74673264a4d909597caef540807f1.pdf',
-  7: 'Steak',
+  2: 'Korean, http://media.wix.com/ugd/a741a9_78c74673264a4d909597caef540807f1.pdf',
+  3: 'Papaya',
+  4: 'Italian',
+  5: 'Haus der 100 Biere',
+  6: 'Burger',
+  7: 'Falafel',
+  8: 'Steak',
 }
 
 class LunchBot {
