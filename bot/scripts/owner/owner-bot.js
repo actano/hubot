@@ -7,7 +7,7 @@ class OwnerBot {
     this.result = 'start'
     res.send(
         'Find the owner!\n' +
-        'All about shared code ownership.\n' +
+        'All about shared code ownership: "owner topics" .\n' +
         'If you have a question about a topic reach out for the owners.\n' +
         'Ask the actual responsible of the topic, if you need more information.\n' +
         'How to works: "owner description"'
@@ -20,20 +20,20 @@ class OwnerBot {
       'Commands for owners and how to find them.\n\n' +
       'owner start: Hey you already did this. It\'s the beginning of the shared code ownership.\n' +
       'owner description: You want to see this again? Go on then.\n' +
-      'owner list: Show the list of owned topics. It\'s growing.\n' +
+      'owner topics: Show the list of owned topics. It\'s growing.\n' +
       'owner add topic: Add a new topic to be owned. It\'s up to you!\n' +
       'owner remove topic: This topic will not be needed anymore. Remove it.\n' +
       'owner add owner: You want to own a topic. Put your name here!\n' +
       'owner remove owner: Not your topic anymore? This removes you from the duty.\n' +
-      'owner get owners: Who are the owners. I\'ll show it to you right now.\n' +
+      'owner owners: Who are the owners. I\'ll show it to you right now.\n' +
       'owner set responsible: You want to be the responsible for a topic? ' +
         'Put a name on the topic.\n' +
-      'owner get responsible: Who is in the lead right now. I\'ll show it to you right now.\n'
+      'owner responsible: Who is in the lead right now. I\'ll show it to you right now.\n'
     )
   }
 
-  listOfTopics(res) {
-    this.result = 'listOfTopics'
+  topicsList(res) {
+    this.result = 'topicsList'
     let message = 'List of owned topics:\n'
     if (this.topics.length === 0) {
       res.send('No topic has a shared code ownership yet. Come one take one over now!')
@@ -83,7 +83,7 @@ class OwnerBot {
 
   removeTopic(res) {
     const topic = res.match[1]
-    this.topics.pop(topic)
+    this.topics = this.topics.filter(item => item.name !== topic)
     this.result = 'removeTopic'
     res.reply(`Topic \`${topic}\` is removed.`)
   }
@@ -98,7 +98,7 @@ class OwnerBot {
         this.topics[topicIdx].owners.push(ownerForTopic)
         res.reply(`Owner ${ownerForTopic} for topic \`${topicName}\` added.`)
       } else {
-        res.reply('No owner specified. ')
+        res.reply(`${ownerForTopic} is already owner for topic \`${topicName}\` `)
       }
     } else {
       res.reply('This is a new topic for me. Add it first! ')
@@ -113,7 +113,9 @@ class OwnerBot {
     if (topicIdx !== -1) {
       const ownerIdx = this.topics[topicIdx].owners.indexOf(ownerForTopic)
       if (ownerIdx !== -1) {
-        this.topics[topicIdx].owners.pop(ownerForTopic)
+        this.topics[topicIdx].owners = this.topics[topicIdx].owners.filter(
+          item => item !== ownerForTopic
+        )
         res.reply(`Owner ${ownerForTopic} for topic ${topicName} removed.`)
       } else {
         res.reply(`${ownerForTopic} is no owner for ${topicName}. `)
@@ -123,8 +125,8 @@ class OwnerBot {
     }
   }
 
-  getOwnersOfTopic(res) {
-    this.result = 'getOwnersOfTopic'
+  ownersOfTopic(res) {
+    this.result = 'ownersOfTopic'
     const topicName = res.match[1]
     const topicIdx = this.topics.findIndex(topic => topic.name === topicName)
     if (topicIdx !== -1) {
@@ -151,8 +153,8 @@ class OwnerBot {
     }
   }
 
-  getResponsibleOfTopic(res) {
-    this.result = 'getResponsibleOfTopic'
+  responsibleOfTopic(res) {
+    this.result = 'responsibleOfTopic'
     const topicName = res.match[1]
     const topicIdx = this.topics.findIndex(topic => topic.name === topicName)
     if (topicIdx !== -1) {

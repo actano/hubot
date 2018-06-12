@@ -7,14 +7,14 @@
 ## Actual Commands
 - owner start
 - owner description
-- owner list
+- owner topics
 - owner add topic `topicName`
 - owner remove topic `topicName`
 - owner add owner `topicName` `responsibleName`
 - owner remove owner `topicName` `responsibleName`
-- owner get owners `topicName`
+- owner owners `topicName`
 - owner set responsible `topicName` `responsibleName`
-- owner get responsible `topicName`
+- owner responsible `topicName`
 
 ## Problems
 
@@ -27,4 +27,5 @@
 2. Check owner of feature over commit history
 3. Give owner notification, if it's topic is modified
 4. Show modifier, if code is owned and show owners the modifications
+5. Make direct channels out of owner list for direct chat at make it important for responsible
 

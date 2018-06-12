@@ -36,14 +36,6 @@ describe('owner-bot', () => {
     })
   })
 
-  describe('listOfTopics', () => {
-    it('should show listOfTopics', () => {
-      bot.listOfTopics(res)
-      expect(bot.result).to.eql('listOfTopics')
-      expect(res.send).to.have.been.calledWith()
-    })
-  })
-
   describe('addTopic', () => {
     it('should show addTopic', () => {
       bot.addTopic(res)
@@ -52,18 +44,18 @@ describe('owner-bot', () => {
     })
   })
 
+  describe('topicsList', () => {
+    it('should show list of topics', () => {
+      bot.topicsList(res)
+      expect(bot.result).to.eql('topicsList')
+      expect(res.send).to.have.been.calledWith()
+    })
+  })
+
   describe('addOwnerToTopic', () => {
     it('should show addOwnerToTopic', () => {
       bot.addOwnerToTopic(res)
       expect(bot.result).to.eql('addOwnerToTopic')
-      expect(res.reply).to.have.been.calledWith()
-    })
-  })
-
-  describe('getOwnersOfTopic', () => {
-    it('should show getOwnersOfTopic', () => {
-      bot.getOwnersOfTopic(res)
-      expect(bot.result).to.eql('getOwnersOfTopic')
       expect(res.reply).to.have.been.calledWith()
     })
   })
@@ -76,10 +68,10 @@ describe('owner-bot', () => {
     })
   })
 
-  describe('getResponsibleOfTopic', () => {
-    it('should show getResponsibleOfTopic', () => {
-      bot.getResponsibleOfTopic(res)
-      expect(bot.result).to.eql('getResponsibleOfTopic')
+  describe('ownersOfTopic', () => {
+    it('should show ownersOfTopic', () => {
+      bot.ownersOfTopic(res)
+      expect(bot.result).to.eql('ownersOfTopic')
       expect(res.reply).to.have.been.calledWith()
     })
   })
@@ -88,6 +80,14 @@ describe('owner-bot', () => {
     it('should show setResponsibleForTopic', () => {
       bot.setResponsibleForTopic(res)
       expect(bot.result).to.eql('setResponsibleForTopic')
+      expect(res.reply).to.have.been.calledWith()
+    })
+  })
+
+  describe('responsibleOfTopic', () => {
+    it('should show responsibleOfTopic', () => {
+      bot.responsibleOfTopic(res)
+      expect(bot.result).to.eql('responsibleOfTopic')
       expect(res.reply).to.have.been.calledWith()
     })
   })
