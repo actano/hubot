@@ -16,7 +16,7 @@ class OwnerBot {
 
   description(res) {
     this.result = 'description'
-    res.reply(
+    res.send(
       'Commands for owners and how to find them.\n\n' +
       'owner start: Hey you already did this. It\'s the beginning of the shared code ownership.\n' +
       'owner description: You want to see this again? Go on then.\n' +
@@ -33,7 +33,7 @@ class OwnerBot {
 
   listOfTopics(res) {
     this.result = 'listOfTopics'
-    res.reply(`List of owned topics:\n${this.topics}`)
+    res.send(`List of owned topics:\n${this.topics}`)
   }
 
   addTopic(res) {

@@ -32,7 +32,7 @@ describe('owner-bot', () => {
     it('should show description', () => {
       bot.description(res)
       expect(bot.result).to.eql('description')
-      expect(res.reply).to.have.been.calledWith()
+      expect(res.send).to.have.been.calledWith()
     })
   })
 
@@ -40,7 +40,7 @@ describe('owner-bot', () => {
     it('should show listOfTopics', () => {
       bot.listOfTopics(res)
       expect(bot.result).to.eql('listOfTopics')
-      expect(res.reply).to.have.been.calledWith()
+      expect(res.send).to.have.been.calledWith()
     })
   })
 
