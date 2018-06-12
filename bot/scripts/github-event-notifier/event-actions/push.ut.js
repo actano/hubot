@@ -1,5 +1,4 @@
 /* eslint-env mocha */
-/* eslint-disable no-unused-expressions */
 
 const sinon = require('sinon')
 const chai = require('chai')
@@ -42,7 +41,7 @@ describe('github-event: push', () => {
     it('should notify', () => {
       const expectedMessage = messages.yarnLock('orga/repo')
       push(data, callback)
-      expect(callback).to.have.been.calledOnce
+      expect(callback).to.have.been.calledWith()
       expect(callback).to.have.been.calledWith(expectedMessage)
     })
   })
@@ -54,7 +53,7 @@ describe('github-event: push', () => {
 
     it('should not notify', () => {
       push(data, callback)
-      expect(callback).to.not.have.been.called
+      expect(callback).to.not.have.been.calledWith()
     })
   })
 
@@ -65,7 +64,7 @@ describe('github-event: push', () => {
     ref.is(() => 'refs/heads/other-branch')
     it('should not notify', () => {
       push(data, callback)
-      expect(callback).to.not.have.been.called
+      expect(callback).to.not.have.been.calledWith()
     })
   })
 
@@ -79,7 +78,7 @@ describe('github-event: push', () => {
     it('should notify', () => {
       const expectedMessage = messages.dockerfile('orga/repo')
       push(data, callback)
-      expect(callback).to.have.been.calledOnce
+      expect(callback).to.have.been.calledWith()
       expect(callback).to.have.been.calledWith(expectedMessage)
     })
   })
@@ -92,7 +91,7 @@ describe('github-event: push', () => {
 
     it('should not notify', () => {
       push(data, callback)
-      expect(callback).to.not.have.been.called
+      expect(callback).to.not.have.been.calledWith()
     })
   })
 
@@ -106,7 +105,6 @@ describe('github-event: push', () => {
       const expectedMessageYarnLock = messages.yarnLock('orga/repo')
       const expectedMessageDockerfile = messages.dockerfile('orga/repo')
       push(data, callback)
-      expect(callback).to.have.been.calledTwice
       expect(callback).to.have.been.calledWith(expectedMessageYarnLock)
       expect(callback).to.have.been.calledWith(expectedMessageDockerfile)
     })

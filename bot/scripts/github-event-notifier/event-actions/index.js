@@ -1,4 +1,5 @@
-/* eslint-disable global-require */
+const push = require('./push')
+
 module.exports = {
-  push: require('./push'),
+  push,
 }

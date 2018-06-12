@@ -1,5 +1,4 @@
 /* eslint-env mocha */
-/* eslint-disable no-unused-expressions */
 
 const sinon = require('sinon')
 const chai = require('chai')
@@ -39,7 +38,7 @@ describe('lunch-bot', () => {
       res.match[1] = 0
       bot.vote(res)
       expect(bot.result[0]).to.eql(['john'])
-      expect(res.reply).to.be.have.been.called
+      expect(res.reply).to.be.have.been.calledWith()
     })
   })
 })

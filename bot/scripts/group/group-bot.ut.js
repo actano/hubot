@@ -1,5 +1,4 @@
 /* eslint-env mocha */
-/* eslint-disable no-unused-expressions */
 
 const sinon = require('sinon')
 const chai = require('chai')
@@ -71,7 +70,7 @@ describe('group-bot', () => {
       bot.groups.italy = { members: ['john'] }
       bot.join(res)
       expect(bot.groups.italy.members).to.eql(['john'])
-      expect(res.send).to.not.have.been.called
+      expect(res.send).to.not.have.been.calledWith()
     })
   })
 
@@ -154,14 +153,14 @@ describe('group-bot', () => {
     it('should reset groups on day change', () => {
       bot.groups.italy = { }
       bot._resetOnNewDay(today)
-      expect(bot.groups.italy).to.exist
+      expect(bot.groups.italy).to.deep.equal({})
     })
 
     it('should NOT reset groups on no day change', () => {
       bot.groups.italy = { }
       clock.tick(ONE_DAY_AS_MILLIS)
       bot._resetOnNewDay(today)
-      expect(bot.groups.italy).to.not.exist
+      expect(bot.groups.italy).to.be.deep.equal(undefined)
     })
 
     it('should call itself when reset interval has passed', () => {
