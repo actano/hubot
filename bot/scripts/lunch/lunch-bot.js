@@ -8,6 +8,7 @@ const LunchChoice = {
   6: 'Burger',
   7: 'Falafel',
   8: 'Steak',
+  9: 'Indian',
 }
 
 class LunchBot {
