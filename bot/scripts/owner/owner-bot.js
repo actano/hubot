@@ -1,4 +1,8 @@
 class OwnerBot {
+  constructor() {
+    this.topics = []
+  }
+
   start(res) {
     this.result = 'start'
     res.send(
@@ -29,23 +33,21 @@ class OwnerBot {
 
   listOfTopics(res) {
     this.result = 'listOfTopics'
-    res.reply(
-            'List of owned topics'
-        )
+    res.reply(`List of owned topics:\n${this.topics}`)
   }
 
   addTopic(res) {
+    const topic = res.match[1]
+    this.topics.push(topic)
     this.result = 'addTopic'
-    res.reply(
-            'Add an ownership to a new topic'
-        )
+    res.reply(`Topic \`${topic}\` is added. Now add owners`)
   }
 
   removeTopic(res) {
+    const topic = res.match[1]
+    this.topics.pop(topic)
     this.result = 'removeTopic'
-    res.reply(
-            'Remove a topic from ownership'
-        )
+    res.reply(`Topic \`${topic}\` is removed.`)
   }
 
   addOwnerToTopic(res) {
