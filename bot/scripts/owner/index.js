@@ -7,8 +7,9 @@ module.exports = (robot) => {
   robot.hear(/owner list/i, (res) => bot.listOfTopics(res))
   robot.hear(/owner add topic ([a-z][A-Z]+)/i, (res) => bot.addTopic(res))
   robot.hear(/owner remove topic ([a-z][A-Z]+)/i, (res) => bot.removeTopic(res))
-  robot.hear(/owner add user/i, (res) => bot.addOwnerToTopic(res))
-  robot.hear(/owner remove user/i, (res) => bot.removeUserFromTopic(res))
-  robot.hear(/owner set responsible/i, (res) => bot.setResponsibleForTopic(res))
-  robot.hear(/owner get responsible/i, (res) => bot.getResponsibleForTopic(res))
+  robot.hear(/owner add owner ([a-z][A-Z]+) (.+)/i, (res) => bot.addOwnerToTopic(res))
+  robot.hear(/owner remove owner ([a-z][A-Z]+) (.+)/i, (res) => bot.removeOwnerFromTopic(res))
+  robot.hear(/owner get owners ([a-z][A-Z]+)/i, (res) => bot.getOwnersOfTopic(res))
+  robot.hear(/owner set responsible ([a-z][A-Z]+) (.+)/i, (res) => bot.setResponsibleForTopic(res))
+  robot.hear(/owner get responsible ([a-z][A-Z]+)/i, (res) => bot.getResponsibleOfTopic(res))
 }

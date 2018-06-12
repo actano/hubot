@@ -60,18 +60,26 @@ describe('owner-bot', () => {
     })
   })
 
-  describe('removeUserFromTopic', () => {
-    it('should show removeUserFromTopic', () => {
-      bot.removeUserFromTopic(res)
-      expect(bot.result).to.eql('removeUserFromTopic')
+  describe('getOwnersOfTopic', () => {
+    it('should show getOwnersOfTopic', () => {
+      bot.getOwnersOfTopic(res)
+      expect(bot.result).to.eql('getOwnersOfTopic')
       expect(res.reply).to.have.been.calledWith()
     })
   })
 
-  describe('getResponsibleForTopic', () => {
-    it('should show getResponsibleForTopic', () => {
-      bot.getResponsibleForTopic(res)
-      expect(bot.result).to.eql('getResponsibleForTopic')
+  describe('removeOwnerFromTopic', () => {
+    it('should show removeOwnerFromTopic', () => {
+      bot.removeOwnerFromTopic(res)
+      expect(bot.result).to.eql('removeOwnerFromTopic')
+      expect(res.reply).to.have.been.calledWith()
+    })
+  })
+
+  describe('getResponsibleOfTopic', () => {
+    it('should show getResponsibleOfTopic', () => {
+      bot.getResponsibleOfTopic(res)
+      expect(bot.result).to.eql('getResponsibleOfTopic')
       expect(res.reply).to.have.been.calledWith()
     })
   })

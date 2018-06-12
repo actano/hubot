@@ -8,12 +8,18 @@
 - owner start
 - owner description
 - owner list
-- owner add topic
-- owner remove topic
-- owner add user
-- owner remove user
-- owner set responsible
-- owner get responsible
+- owner add topic `topicName`
+- owner remove topic `topicName`
+- owner add owner `topicName` `responsibleName`
+- owner remove owner `topicName` `responsibleName`
+- owner get owners `topicName`
+- owner set responsible `topicName` `responsibleName`
+- owner get responsible `topicName`
+
+## Problems
+
+- Rebuild build pipeline for NextBot
+- Data is not persistent yet
 
 ## What's comming next
 
